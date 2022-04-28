@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
   },
   path_names: {
-    sign_in: 'login',
+    sign_in: 'signin',
     password: 'forgot',
     confirmation: 'confirm',
-    sign_up: 'sign_up',
+    sign_up: 'signup',
     sign_out: 'signout'
   }
   get "dashboard/show"
