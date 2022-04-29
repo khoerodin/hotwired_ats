@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :account
+  has_many :applicants, dependent: :destroy
 
   validates :title, :location, :status, :job_type, presence: true
 
