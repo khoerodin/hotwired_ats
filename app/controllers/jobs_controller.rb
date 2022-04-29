@@ -19,7 +19,12 @@ class JobsController < ApplicationController
   end
 
   # GET /jobs/1/edit
-  def edit; end
+  def edit
+    html = render_to_string(partial: "form", locals: { job: @job })
+    render operations: cable_car
+      .inner_html("#slideover-content", html:)
+      .text_content("#slideover-header", text: "Update job")
+  end
 
   # POST /jobs
   def create
@@ -40,14 +45,15 @@ class JobsController < ApplicationController
 
   # PATCH/PUT /jobs/1
   def update
-    respond_to do |format|
-      if @job.update(job_params)
-        format.html { redirect_to job_url(@job), notice: "Job was successfully updated." }
-        format.json { render :show, status: :ok, location: @job }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
+    if @job.update(job_params)
+      html = render_to_string(partial: "job", locals: { job: @job })
+      render operations: cable_car
+        .replace(dom_id(@job), html:)
+        .dispatch_event(name: "submit:success")
+    else
+      html = render_to_string(partial: "form", locals: { job: @job })
+      render operations: cable_car
+        .inner_html("#job-form", html:), status: :unprocessable_entity
     end
   end
 
