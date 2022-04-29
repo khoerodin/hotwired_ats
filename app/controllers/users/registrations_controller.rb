@@ -11,7 +11,7 @@ module Users
       respond_with resource
     end
 
-    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+    # rubocop:disable Metrics/AbcSize
     def create
       build_resource(sign_up_params)
 
@@ -34,7 +34,7 @@ module Users
         respond_with resource, status: :unprocessable_entity
       end
     end
-    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+    # rubocop:enable Metrics/AbcSize
 
     protected
 
