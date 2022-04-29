@@ -1,0 +1,42 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.1.0
+  TargetRailsVersion: 7.0.2.4
+  Exclude:
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - ".git/**/*"
+    - "config/**/*"
+    - "app/channels/**/*"
+    - "app/mailers/*"
+    - "db/migrate/*"
+    - "bin/*"
+    - "db/schema.rb"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+    - "Gemfile"
+    - "Rakefile"
+    - "config.ru"
+
+Rails:
+  Enabled: true
+
+#Set default to double quotes
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+#Allow Japanese comments
+Style/AsciiComments:
+  Enabled: false
+
+#class description No comment required
+Style/Documentation:
+  Enabled: false
+
+#Frozen literal comments not required
+Style/FrozenStringLiteralComment:
+  Enabled: false
