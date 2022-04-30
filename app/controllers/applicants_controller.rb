@@ -1,20 +1,11 @@
 class ApplicantsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_applicant, only: %i[show edit update destroy change_stage]
+  include Filterable
 
   # GET /applicants
   def index
-    if search_params.present?
-      @applicants = Applicant.includes(:job)
-      @applicants = @applicants.where(job_id: search_params[:job]) if search_params[:job].present?
-      @applicants = @applicants.text_search(search_params[:query]) if search_params[:query].present?
-      if search_params[:sort].present?
-        sort = search_params[:sort].split('-')
-        @applicants = @applicants.order("#{sort[0]} #{sort[1]}")
-      end
-    else
-      @applicants = Applicant.includes(:job).all
-    end
+    @applicants = filter!(Applicant).for_account(current_user.account_id)
   end
 
   # GET /applicants/1
@@ -87,6 +78,6 @@ class ApplicantsController < ApplicationController
   end
 
   def search_params
-    params.permit(:query, :job, :sort)
+    params.permit(Applicant::FILTER_PARAMS)
   end
 end
