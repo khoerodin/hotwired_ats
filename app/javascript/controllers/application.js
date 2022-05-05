@@ -1,4 +1,4 @@
-import { Application } from "@hotwired/stimulus"
+import { Application } from "stimulus"
 import StimulusReflex from "stimulus_reflex"
 
 const application = Application.start()
