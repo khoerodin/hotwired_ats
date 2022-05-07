@@ -32,6 +32,6 @@
 
   <div class="form-group mr-2">
     <%= form.label :query, class: "sr-only" %>
-    <%= form.text_field :query, placeholder: "Search applicants", value: params[:query], data: { action: "input->form#submit" } %>
+    <%= form.text_field :query, placeholder: "Search applicants", value: fetch_filter_key("applicant", current_user.id, 'query'), data: { action: "input->form#submit" } %>
   </div>
 <% end %>
