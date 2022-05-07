@@ -7,13 +7,16 @@
               new_job_path,
               class: "btn-primary-outline",
               data: {
-                action: "click->slideover#open",
+                action: "mouseup->slideover#open",
                 remote: true
-              } %>
+              }
+  %>
+</div>
+
+<div class="flex mb-6 justify-end">
+  <%= render "filter_form" %>
 </div>
 
 <div class="shadow overflow-hidden sm:rounded-md">
-  <div class="divide-y divide-gray-200" id="jobs">
-    <%= render @jobs %>
-  </div>
+  <%= render "list", jobs: @jobs %>
 </div>
