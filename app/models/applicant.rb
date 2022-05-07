@@ -30,10 +30,10 @@ class Applicant < ApplicationRecord
                     }
                   }
 
-  scope :for_job, ->(job_id) { job_id.present? ? where(job_id: job_id) : all }
+  scope :for_job, ->(job_id) { job_id.present? ? where(job_id:) : all }
   scope :search, ->(query) { query.present? ? text_search(query) : all }
   scope :sorted, ->(selection) { selection.present? ? apply_sort(selection) : all }
-  scope :for_account, ->(account_id) { where(jobs: { account_id: account_id }) }
+  scope :for_account, ->(account_id) { where(jobs: { account_id: }) }
 
   def self.apply_sort(selection)
     sort, direction = selection.split("-")

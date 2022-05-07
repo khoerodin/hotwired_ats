@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :applicants
   resources :jobs
   devise_for :users,
   path: '',
@@ -24,7 +23,7 @@ Rails.application.routes.draw do
     root to: 'devise/sessions#new'
   end
 
-  resources :applicants do
+  resources :applicants, except: [:update, :destroy] do
     patch :change_stage, on: :member
   end
 end

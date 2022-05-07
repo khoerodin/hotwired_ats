@@ -7,7 +7,7 @@
       </div>
 
       <div id="applicants-<%= stage %>" data-drag-target="list" data-new-value="<%= stage %>" class="h-full">
-        <% @grouped_applicants[stage]&.each do |applicant| %>
+        <% grouped_applicants[stage]&.each do |applicant| %>
           <%= render "card", applicant: applicant %>
         <% end %>
       </div>
