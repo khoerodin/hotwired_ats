@@ -11,7 +11,9 @@
   <div class="form-group mr-2">
     <%= form.label :sort, class: "sr-only" %>
     <%= form.select :sort,
-                    options_for_select([['Application Date Ascending', 'created_at-asc'], ['Application Date Descending', 'created_at-desc']], params[:sort]),
+                    options_for_select(
+                      applicant_sort_options_for_select,
+                      fetch_filter_key("applicant", current_user.id, "sort")),
                     {},
                     { data: { action: "change->form#submit" } }
     %>
@@ -20,7 +22,9 @@
   <div class="form-group mr-2">
     <%= form.label :job, class: "sr-only" %>
     <%= form.select :job,
-                    options_for_select(Job.where(account_id: current_user.account_id).order(:title).pluck(:title, :id), params[:job]),
+                    options_for_select(
+                      job_options_for_select(current_user.account_id),
+                      fetch_filter_key("applicant", current_user.id, "job")),
                     { include_blank: 'All Jobs' },
                     { data: { action: "change->form#submit" } }
     %>
