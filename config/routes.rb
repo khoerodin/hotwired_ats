@@ -25,5 +25,6 @@ Rails.application.routes.draw do
 
   resources :applicants, except: [:update, :destroy] do
     patch :change_stage, on: :member
+    get :resume, action: :show, controller: 'resumes'
   end
 end

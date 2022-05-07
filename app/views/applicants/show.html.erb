@@ -2,23 +2,37 @@
   <h2 class="mt-6 text-3xl font-extrabold">
     <%= @applicant.name %>
   </h2>
+
   <%= link_to "Send email", "#", class: "btn-primary-outline", data: { action: "click->slideover#open", remote: true } %>
+
 </div>
+
 <div class="shadow p-4 text-gray-700">
+
   <div class="flex justify-between mb-6">
     <div class="space-y-2">
       <h3 class="text-xl font-bold">Applicant info</h3>
       <p><%= mail_to @applicant.email %></p>
       <p><%= phone_to @applicant.phone %></p>
     </div>
+
     <div class="space-y-2">
       <h3 class="text-xl font-bold">Application details</h3>
       <p>Applied for <%= @applicant.job_title %></p>
       <p>Applied on <%= l(@applicant.created_at.to_date, format: :long) %></p>
     </div>
+
     <div class="space-y-2">
       <!-- Applicant actions go here -->
     </div>
   </div>
-  <!-- Resume goes here -->
+
+  <% if @applicant.resume.attached? %>
+    <%= turbo_frame_tag "resume", src: applicant_resume_path(@applicant), loading: "lazy" do %>
+      <div class="w-full bg-gray-100 rounded flex justify-center items-center h-[1000px]">
+        Loading...
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
