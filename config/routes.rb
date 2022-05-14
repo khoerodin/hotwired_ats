@@ -28,4 +28,6 @@ Rails.application.routes.draw do
     get :resume, action: :show, controller: 'resumes'
     resources :emails, only: %i[index new show create]
   end
+
+  resources :email_replies, only: %i[new]
 end
