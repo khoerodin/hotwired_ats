@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   resources :applicants, except: [:update, :destroy] do
     patch :change_stage, on: :member
     get :resume, action: :show, controller: 'resumes'
-    resources :emails, only: %i[new create]
+    resources :emails, only: %i[index new show create]
   end
 end
