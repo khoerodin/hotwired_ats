@@ -42,16 +42,16 @@ class Email < ApplicationRecord
       partial: "emails/list_item",
       locals: {
         email: self,
-        applicant: applicant
+        applicant:
       }
     )
   end
 
   def create_notification
     InboundEmailNotification.create(
-      user: user,
+      user:,
       params: {
-        applicant: applicant,
+        applicant:,
         email: self
       }
     )

@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   end
 
   resources :email_replies, only: %i[new]
+  resources :notifications, only: %i[index]
 end
