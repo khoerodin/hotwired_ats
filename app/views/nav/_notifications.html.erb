@@ -12,10 +12,10 @@
   >
     <span class="sr-only">Notifications</span>
     <%= inline_svg_tag('bell', class: "h-6 w-6") %>
-    <% if current_user.notifications.unread.exists? %>
+    <% if user.notifications.unread.exists? %>
       <div class="absolute inset-0 object-right-top -mr-6">
         <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-          <%= current_user.notifications.unread.count %>
+          <%= user.notifications.unread.count %>
         </div>
       </div>
     <% end %>

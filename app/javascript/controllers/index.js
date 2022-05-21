@@ -10,6 +10,9 @@ application.register("alert", AlertController)
 import DragController from "./drag_controller.js"
 application.register("drag", DragController)
 
+import DropdownController from "./dropdown_controller.js"
+application.register("dropdown", DropdownController)
+
 import FormController from "./form_controller.js"
 application.register("form", FormController)
 
