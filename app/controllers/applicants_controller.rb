@@ -28,10 +28,7 @@ class ApplicantsController < ApplicationController
   def create
     @applicant = Applicant.new(applicant_params)
     if @applicant.save
-      html = render_to_string(partial: "card", locals: { applicant: @applicant })
-      render operations: cable_car
-        .prepend("#applicants-#{@applicant.stage}", html:)
-        .dispatch_event(name: "submit:success")
+      render operations: cable_car.dispatch_event(name: "submit:success")
     else
       html = render_to_string(partial: "form", locals: { applicant: @applicant })
       render operations: cable_car
