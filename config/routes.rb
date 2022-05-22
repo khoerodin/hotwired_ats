@@ -34,7 +34,9 @@ Rails.application.routes.draw do
 
   namespace :careers do
     resources :accounts, only: %i[show] do
-      resources :jobs, only: %i[index show], shallow: true
+      resources :jobs, only: %i[index show], shallow: true do
+        resources :applicants, only: %i[new create]
+      end
     end
   end
 end
