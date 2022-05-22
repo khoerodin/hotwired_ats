@@ -15,4 +15,5 @@ mrujs.start({
   ]
 })
 
+CableReady.initialize({ consumer })
 ActiveStorage.start()
