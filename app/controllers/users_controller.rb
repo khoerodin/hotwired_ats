@@ -18,8 +18,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.account = current_user.account
     @user.password = SecureRandom.alphanumeric(24)
+    @user.invited_at = Time.current
+    @user.invite_token = Devise.friendly_token
+    @user.invited_by = current_user
 
     if @user.save
+      UserInviteMailer.invite(@user).deliver_later
       html = render_to_string(partial: "user", locals: { user: @user })
       render operations: cable_car
         .prepend("#users", html:)
