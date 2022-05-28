@@ -25,6 +25,9 @@ application.register("form", FormController)
 import HelloController from "./hello_controller.js"
 application.register("hello", HelloController)
 
+import HiringStagesController from "./hiring_stages_controller.js"
+application.register("hiring-stages", HiringStagesController)
+
 import NotificationsController from "./notifications_controller.js"
 application.register("notifications", NotificationsController)
 

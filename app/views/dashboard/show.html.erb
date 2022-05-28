@@ -9,6 +9,6 @@
     <%= render "applicants_chart", categories: @categories, series: @series %>
   </div>
   <div id="hiring-stages-chart" class="sm:w-full md:w-1/2">
-    <!-- Build me next -->
+    <%= render "hiring_stages_chart", stage_labels: @stage_labels, stage_series: @stage_series %>
   </div>
 </div>
