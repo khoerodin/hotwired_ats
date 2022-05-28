@@ -58,6 +58,7 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-performance", require: false
   gem "rails_best_practices"
+  gem "foreman"
 end
 
 group :development do
