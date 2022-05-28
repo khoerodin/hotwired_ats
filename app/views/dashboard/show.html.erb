@@ -1,1 +1,14 @@
-<%= link_to "Career page", careers_account_path(current_user.account) %>
+<div>
+  <h2 class="mt-6 text-3xl font-extrabold text-gray-700">
+    Recruiting Dashboard
+  </h2>
+</div>
+
+<div class="flex w-full space-x-8 sm:flex-col md:flex-row flex-1">
+  <div id="applicants-chart" class="sm:w-full md:w-1/2">
+    <%= render "applicants_chart", categories: @categories, series: @series %>
+  </div>
+  <div id="hiring-stages-chart" class="sm:w-full md:w-1/2">
+    <!-- Build me next -->
+  </div>
+</div>
