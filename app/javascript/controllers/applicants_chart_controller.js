@@ -33,4 +33,19 @@ export default class extends ApplicationController {
       }
     }
   }
+
+  update() {
+    this.stimulate('ApplicantsChart#update', event.target, { serializeForm: true })
+  }
+
+  afterUpdate() {
+    this.chart.updateOptions({
+      series: [{
+        data: this.seriesValue
+      }],
+      xaxis: {
+        categories: this.categoriesValue
+      }
+    });
+  }
 }
