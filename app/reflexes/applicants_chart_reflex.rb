@@ -4,7 +4,7 @@ class ApplicantsChartReflex < ApplicationReflex
     categories, series = assign_data(report_data)
 
     cable_ready
-      .set_dataset_property(name: "applicantsChartCategoriesValue", selector: "#applicants-chart-container", value: categories)
+      .set_dataset_property(name: "applicantsChartLabelsValue", selector: "#applicants-chart-container", value: categories)
       .set_dataset_property(name: "applicantsChartSeriesValue", selector: "#applicants-chart-container", value: series)
       .broadcast
 

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     sign_out: 'signout'
   }
   get "dashboard/show"
+  get "charts/show", as: :chart
 
   authenticated :user do
     root to: 'dashboard#show', as: :user_root

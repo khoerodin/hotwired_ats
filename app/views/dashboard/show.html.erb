@@ -6,9 +6,9 @@
 
 <div class="flex w-full space-x-8 sm:flex-col md:flex-row flex-1">
   <div id="applicants-chart" class="sm:w-full md:w-1/2">
-    <%= render "applicants_chart", categories: @categories, series: @series %>
+    <%= turbo_frame_tag "applicants_chart", src: chart_path(chart_type: "Charts::ApplicantsChart"), loading: "lazy" %>
   </div>
   <div id="hiring-stages-chart" class="sm:w-full md:w-1/2">
-    <%= render "hiring_stages_chart", stage_labels: @stage_labels, stage_series: @stage_series %>
+    <%= turbo_frame_tag "hiring_stages_chart", src: chart_path(chart_type: "Charts::HiringStagesChart"), loading: "lazy" %>
   </div>
 </div>
