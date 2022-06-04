@@ -13,6 +13,9 @@ application.register("applicants-chart", ApplicantsChartController)
 import ApplicationController from "./application_controller.js"
 application.register("application", ApplicationController)
 
+import ChartsController from "./charts_controller.js"
+application.register("charts", ChartsController)
+
 import DragController from "./drag_controller.js"
 application.register("drag", DragController)
 
